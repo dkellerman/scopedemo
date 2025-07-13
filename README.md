@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# David Kellerman - Scope Labs Example
+
+## Overview
+
+A web application for managing and viewing videos. Built with Next.js and Tailwind v4. UI works on both mobile web and desktop.
+
+### Additional features
+
+- Fake login by entering any username on the home page (saved in sessionStorage)
+- Allows anonymous users to view video details and comment - not sure if this was intended to be public, but would be a quick change to remove
+- Videos marked as in progress (when played), and are sorted first for easy access - stored in localStorage
+- Otherwise videos sorted by creation date (updated date might be ideal)
+- Comments, for now username can be entered along with comment
+- Included an "edit video" since I was unsure if that was required
+- Also added custom fullscreen/speed buttons to demo custom controls
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js / npm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the Application
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<!-- Replace these with actual screenshots -->
+![Login Page](public/screenshots/login.png)
+![User Videos List](public/screenshots/videos_list.png)
+![User Videos List](public/screenshots/list2.png)
+![Video Detail and Comments](public/screenshots/detail_and_comments.png)
+![Add New Video](public/screenshots/add_video.png)
+![Edit Video](public/screenshots/edit_video.png)
 
-## Learn More
+## Future ideas and current limitations
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Auth is mostly fake and not well tested, would typically make an AuthContext wrapper for this, but wanted to keep the code minimal
+- Pagination would be needed, but requires server-side sorting
+- plyr-react might be a better option than HTML5 video with custom controls
+- UI assumes that video thumbnails would eventually be provided, at same aspect ratio as video
+- I think getting the exact right responsive grid layout for the video list (keeping the thumbnail aspect ratio intact) would require some more thought and testing
+- Could use more form validation on the client-side, especially the video URL
+- Timestamps could use a library like time-ago
+- Avoided server-side fetch for simplicity, but it might make the app snappier
+- Comments and descriptions will not allow HTML or markdown, and are not sanitized (but are auto-escaped)
+  - rich text would benefit from CSP policy
+- I slightly regret putting the comments on the right side, I think below the video would have been a cleaner option, without any scrolling
+- Comments don't update in real-time (could use websocket, poll, or SSE)
+- Comments would benefit from a nicely implemented "optimistic" add
+- Some loading states are causing a little bit of flicker (SSR would help with that)
+- Truncation of title/description could be an issue on mobile, since there's no hover to see complete text
+- A newly added video ought to be sorted first in the list, ahead of the in progress videos, and probably have some kind of visual indicator
+- I don't love the placement of the add button
+- Invalid video detail ID throws 500 on the server, might be nicer to respond with 404 - hence it shows a generic error rather than a "not found" on the UI
+- Making playback rate sticky could be a nice feature when returning to the same video often
+- Percentage progress of video would be nice as well
