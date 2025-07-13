@@ -4,15 +4,19 @@
 
 A web application for managing and viewing videos. Built with Next.js and Tailwind v4. UI works on both mobile web and desktop.
 
-### Additional features
+### Features
 
-- Fake login by entering any username on the home page (saved in sessionStorage)
-- Allows anonymous users to view video details and comment - not sure if this was intended to be public, but would be a quick change to remove
-- Videos marked as in progress (when played), and are sorted first for easy access - stored in localStorage
-- Otherwise videos sorted by creation date (updated date might be ideal)
-- Comments, for now username can be entered along with comment
-- Included an "edit video" since I was unsure if that was required
-- Also added custom fullscreen/speed buttons to demo custom controls
+- Splash page: fake login by entering any username on the home page (saved in sessionStorage)
+- User videos list
+  - Videos marked as in progress (when played), and are sorted first for easy access - stored in localStorage
+  - Otherwise videos sorted by creation date (updated date might be ideal)
+- Video details and HTML5 player
+  - Also added custom fullscreen/speed buttons to demo custom controls
+  - Allows anonymous users to view video details and comment - not sure if this was intended to be public, but would be a quick change to remove
+- Comments
+  - For now username can be entered along with comment
+- Add new video
+- Also included an "edit video" since I was unsure if that was required
 
 ## Getting Started
 
