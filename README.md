@@ -34,6 +34,41 @@ npm run dev
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Project structure
+
+```text
+.
+├── public/
+│   └── screenshots/         # App screenshots for README
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx       # Root layout
+│   │   ├── page.tsx         # Home/login page
+│   │   ├── globals.css      # Global styles
+│   │   └── videos/
+│   │       ├── layout.tsx   # Common layout for logged in pages
+│   │       ├── page.tsx     # Video list page
+│   │       ├── new/
+│   │       │   └── page.tsx # Add new video
+│   │       └── [id]/
+│   │           ├── page.tsx # Video detail
+│   │           └── edit/
+│   │               └── page.tsx # Edit video
+│   ├── components/          # Reusable UI components
+│   │   ├── CommentsList.tsx # Comments bar and new comment form
+│   │   ├── LogoutLink.tsx   # Fake logout
+│   │   ├── VideoDetail.tsx  # Video details and player
+│   │   ├── VideoForm.tsx    # Common form for add/edit video
+│   │   ├── VideosContext.tsx# State and API calls
+│   │   ├── VideosList.tsx   # Main videos grid
+│   │   └── ui.tsx           # Common components (shadcn-like)
+│   ├── constants.ts         # App constants, include API endpoint
+│   └── types.ts             # Shared TypeScript types
+├── package.json
+├── tsconfig.json
+└── ... (config files)
+```
+
 ## Screenshots
 
 <!-- Replace these with actual screenshots -->
